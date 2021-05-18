@@ -193,7 +193,7 @@ INNER JOIN (
 	)
 ) b on sh.hobby_id = b.hobby_id
 
---18 Задание
+--18 Задание +
 SELECT sh.hobby_id, h.name, h.risk
 FROM student_hobby sh
 INNER JOIN student s on s.id = sh.student_id 
@@ -201,7 +201,7 @@ INNER JOIN hobby h on h.id = sh.hobby_id
 GROUP BY h.name, sh.hobby_id, h.risk
 ORDER BY h.risk DESC LIMIT 3
 
---19 Задание
+--19 Задание +
 SELECT s.name, s.surname, (current_date - sh.date_start) as time
 FROM student_hobby sh
 INNER JOIN student s on s.id = sh.student_id 
@@ -227,6 +227,7 @@ FROM student
 ORDER BY score DESC
 
 --22 Задание 
+-- case, а если курсов 100 штук?)
 CREATE OR REPLACE VIEW Students_V1 AS
 SELECT DISTINCT ON (kurs)
 CASE

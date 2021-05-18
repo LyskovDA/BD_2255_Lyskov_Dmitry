@@ -53,6 +53,7 @@ WHERE sh.date_finish is null
 GROUP BY s.n_group, s.score
 
 --7 Задание
+-- разница между датами возвращает кол-во дней, не кол-во месяцев (как в задании)
 SELECT h.name, h.risk,
 CASE
 	WHEN (sh.date_finish - sh.date_start) is null THEN (current_date - sh.date_start)
@@ -64,7 +65,8 @@ INNER JOIN hobby h on h.id = sh.hobby_id
 ORDER BY time_hobby DESC
 LIMIT 1
 
---8 Задание
+--8 Задание 
+-- Тут нет ничего про максимальный балл
 SELECT DISTINCT h.name
 FROM student_hobby sh
 INNER JOIN student s on s.id = sh.student_id 

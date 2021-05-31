@@ -53,6 +53,7 @@ WHERE sh.date_finish is null
 GROUP BY s.n_group, s.score
 
 --7 Задание
+-- разница между датами возвращает кол-во дней, не кол-во месяцев (как в задании)
 SELECT h.name, h.risk,
 CASE
 	WHEN (sh.date_finish - sh.date_start) is null THEN (current_date - sh.date_start)
@@ -64,7 +65,8 @@ INNER JOIN hobby h on h.id = sh.hobby_id
 ORDER BY time_hobby DESC
 LIMIT 1
 
---8 Задание
+--8 Задание 
+-- Тут нет ничего про максимальный балл
 SELECT DISTINCT h.name
 FROM student_hobby sh
 INNER JOIN student s on s.id = sh.student_id 
@@ -191,7 +193,7 @@ INNER JOIN (
 	)
 ) b on sh.hobby_id = b.hobby_id
 
---18 Задание
+--18 Задание +
 SELECT sh.hobby_id, h.name, h.risk
 FROM student_hobby sh
 INNER JOIN student s on s.id = sh.student_id 
@@ -199,7 +201,7 @@ INNER JOIN hobby h on h.id = sh.hobby_id
 GROUP BY h.name, sh.hobby_id, h.risk
 ORDER BY h.risk DESC LIMIT 3
 
---19 Задание
+--19 Задание +
 SELECT s.name, s.surname, (current_date - sh.date_start) as time
 FROM student_hobby sh
 INNER JOIN student s on s.id = sh.student_id 
@@ -225,6 +227,7 @@ FROM student
 ORDER BY score DESC
 
 --22 Задание 
+-- case, а если курсов 100 штук?)
 CREATE OR REPLACE VIEW Students_V1 AS
 SELECT DISTINCT ON (kurs)
 CASE
